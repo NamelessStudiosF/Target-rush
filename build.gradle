@@ -1,3 +1,27 @@
-plugins {
-    id 'com.android.application' version '8.5.2' apply false
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.targetrush.game'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.targetrush.game'
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            // Signs with the debug key so `assembleRelease` yields an installable APK out of the box.
+            // Replace with your own signingConfig before publishing to Google Play.
+            signingConfig signingConfigs.debug
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    // Game is pure HTML/JS in assets; no dependencies on purpose (small APK, nothing to license).
 }
